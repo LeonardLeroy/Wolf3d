@@ -23,11 +23,8 @@ static float calculate_projected_wall_height(float perpendicular_distance,
 
 static sfColor determine_wall_color(ray_t *ray)
 {
-    if (ray->wall_hit_content == 1) {
-        return ray->was_hit_vertical ? sfColor_fromRGB(180, 0, 0)
-            : sfColor_fromRGB(200, 0, 0);
-    }
-    return sfColor_fromRGB(150, 150, 150);
+    return ray->was_hit_vertical ? sfColor_fromRGB(150, 150, 150)
+        : sfColor_fromRGB(200, 0, 0);
 }
 
 static void render_wall_strip(sfml_t *sfml, wall_strip_params_t params)

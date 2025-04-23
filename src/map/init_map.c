@@ -15,10 +15,12 @@ static void determine_map_borders(sfml_t *sfml, int i, int j)
         sfml->game->map[i][j] = 0;
 }
 
-static void determine_map_content(sfml_t *sfml, int i, int j)
+void determine_map_content(sfml_t *sfml, int i, int j)
 {
     if (rand() % 5 == 0)
         sfml->game->map[i][j] = 1;
+    else
+        sfml->game->map[i][j] = 0;
 }
 
 void init_map(sfml_t *sfml)

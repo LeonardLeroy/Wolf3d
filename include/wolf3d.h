@@ -171,6 +171,8 @@ void move_player(sfml_t *sfml, float speed, float angle);
 
 /// MAP ///
 void init_map(sfml_t *sfml);
+void determine_map_content(sfml_t *sfml, int i, int j);
+void reset_map(sfml_t *sfml);
 void draw_floor_and_ceiling(sfml_t *sfml);
 
 /// RAY CASTING ///

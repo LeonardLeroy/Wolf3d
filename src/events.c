@@ -31,6 +31,8 @@ void events(sfml_t *sfml)
     if (sfml->event.type == sfEvtKeyPressed) {
         if (sfml->event.key.code == sfKeyEscape)
             sfRenderWindow_close(sfml->window);
+        if (sfml->event.key.code == sfKeyR)
+            reset_map(sfml);
     }
 }
 
