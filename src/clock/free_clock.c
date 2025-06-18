@@ -9,5 +9,10 @@
 
 void free_clock(sfml_t *sfml)
 {
-    sfClock_destroy(sfml->clock);
+    if (!sfml->clocks)
+        return;
+    if (sfml->clocks->clock)
+        sfClock_destroy(sfml->clocks->clock);
+    free(sfml->clocks);
+    sfml->clocks = NULL;
 }

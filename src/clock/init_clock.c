@@ -9,5 +9,8 @@
 
 void init_clock(sfml_t *sfml)
 {
-    sfml->clock = sfClock_create();
+    sfml->clocks = salloc(sizeof(clocks_t));
+    sfml->clocks->clock = sfClock_create();
+    sfml->clocks->deltaTime = 0.0f;
+    sfml->clocks->elapsed = 0.0f;
 }

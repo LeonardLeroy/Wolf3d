@@ -53,6 +53,7 @@ static float check_horizontal_collision(sfml_t *sfml, collision_check_t check)
 static void init_horizontal_ray_data(sfml_t *sfml, float ray_angle,
     ray_data_t *data)
 {
+    memset(data, 0, sizeof(ray_data_t));
     set_horizontal_intercepts(sfml, ray_angle, &data->xintercept,
         &data->yintercept);
     calculate_steps(ray_angle, &data->xstep, &data->ystep);
@@ -63,8 +64,8 @@ static void init_horizontal_ray_data(sfml_t *sfml, float ray_angle,
 float calculate_horizontal_distance(sfml_t *sfml, float ray_angle)
 {
     ray_data_t data;
-    float check_x;
-    float check_y;
+    float check_x = 0.0f;
+    float check_y = 0.0f;
     float dist;
 
     init_horizontal_ray_data(sfml, ray_angle, &data);
@@ -88,8 +89,8 @@ void calculate_wall_hit_from_horizontal(sfml_t *sfml, float ray_angle,
     int ray_id)
 {
     ray_data_t data;
-    float check_x;
-    float check_y;
+    float check_x = 0.0f;
+    float check_y = 0.0f;
 
     init_horizontal_ray_data(sfml, ray_angle, &data);
     while (is_within_bounds(data.next_x, data.next_y)) {
@@ -97,8 +98,10 @@ void calculate_wall_hit_from_horizontal(sfml_t *sfml, float ray_angle,
         check_x = data.next_x;
         if (check_wall_hit(sfml,
             (collision_check_t){check_x, check_y, data.next_x, data.next_y},
-            ray_id))
+            ray_id)) {
+            sfml->game->rays[ray_id].was_hit_vertical = 0;
             break;
+        }
         data.next_x += data.xstep;
         data.next_y += data.ystep;
     }

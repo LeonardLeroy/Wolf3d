@@ -7,31 +7,43 @@
 
 #include "wolf3d.h"
 
-static void determine_map_borders(sfml_t *sfml, int i, int j)
+static void fill_map_line(sfml_t *sfml, char *line, int i)
 {
-    if (i == 0 || j == 0 || i == MAP_HEIGHT - 1 || j == MAP_WIDTH - 1)
-        sfml->game->map[i][j] = 1;
-    else
-        sfml->game->map[i][j] = 0;
+    char *token = strtok(line, " \n");
+    int j = 1;
+
+    while (token != NULL) {
+        if (token[0] == '0' || token[0] == '1') {
+            sfml->game->map[i][j] = token[0] - '0';
+            j++;
+        }
+        token = strtok(NULL, " \n");
+    }
 }
 
-void determine_map_content(sfml_t *sfml, int i, int j)
+static void determine_file_map(sfml_t *sfml, FILE *file)
 {
-    if (rand() % 5 == 0)
-        sfml->game->map[i][j] = 1;
-    else
-        sfml->game->map[i][j] = 0;
+    char *line = NULL;
+    size_t len = 0;
+
+    for (int i = 1; i < MAP_HEIGHT - 1; i++) {
+        if (getline(&line, &len, file) == -1) {
+            free(line);
+            line = NULL;
+            break;
+        }
+        fill_map_line(sfml, line, i);
+        free(line);
+        line = NULL;
+    }
 }
 
-void init_map(sfml_t *sfml)
+void init_map(sfml_t *sfml, FILE *file)
 {
-    for (int i = 0; i < MAP_HEIGHT; i++) {
-        for (int j = 0; j < MAP_WIDTH; j++)
-            determine_map_borders(sfml, i, j);
+    if (file == NULL) {
+        generate_procedural_map(sfml);
+        return;
     }
-    for (int i = 2; i < MAP_HEIGHT - 2; i++) {
-        for (int j = 2; j < MAP_WIDTH - 2; j++)
-            determine_map_content(sfml, i, j);
-    }
+    determine_file_map(sfml, file);
     sfml->game->map[1][1] = 0;
 }

@@ -7,12 +7,23 @@
 
 #include "wolf3d.h"
 
+void init_window_size(sfml_t *sfml)
+{
+    sfml->window_size = salloc(sizeof(window_size_t));
+    sfml->window_size->width = WINDOW_WIDTH;
+    sfml->window_size->height = WINDOW_HEIGHT;
+    sfml->window_size->scale_factor_x = 1.0f;
+    sfml->window_size->scale_factor_y = 1.0f;
+}
+
 void init_window(sfml_t *sfml)
 {
+    if (sfml->window)
+        return;
     sfml->window = sfRenderWindow_create(
-        (sfVideoMode){WINDOW_WIDTH, WINDOW_HEIGHT, 32},
-        "Wolf3d", sfClose, NULL
+        (sfVideoMode){sfml->window_size->width, sfml->window_size->height, 32},
+        "Wolf3d", sfResize | sfClose, NULL
     );
     sfRenderWindow_setVerticalSyncEnabled(sfml->window, 1);
-    sfRenderWindow_setMouseCursorVisible(sfml->window, sfFalse);
+    sfRenderWindow_setMouseCursorVisible(sfml->window, 0);
 }

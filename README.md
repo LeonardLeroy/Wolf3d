@@ -14,51 +14,51 @@ General:
 - Window mode
 - Full - screen mode
 - [x] The game manages inputs from the mouse click and keyboard.
-- [ ] The game contains animated sprites rendered thanks to sprite sheets.
-- [ ] Animations in your program are frame rate independent.
-- [ ] Animations and movements in your program are timed by clocks.
+- [x] The game contains animated sprites rendered thanks to sprite sheets.
+- [x] Animations in your program are frame rate independent.
+- [x] Animations and movements in your program are timed by clocks.
 
 Gameplay and mechanics:
 
 - [x] Basic movements (forward, backward, left and right).
 - [x] First-person perspective.
-- [ ] Use of textures and sprites for objects.
-- [ ] Light (flashlight).
-- [ ] A basic weapon (knife or pistol): possibility to hit the walls without enemies, enemies are
+- [x] Use of textures and sprites for objects.
+- [x] Light (flashlight).
+- [x] A basic weapon (knife or pistol): possibility to hit the walls without enemies, enemies are
 NOT a MUST feature.
-- [ ] Backup system.
+- [x] Backup system.
 
 Environment:
 
-- [ ] Map display (floor, ceiling and walls).
+- [x] Map display (floor, ceiling and walls).
 - [x] Collision system.
 
 Sounds and Graphics:
 
-- [ ] At least one animation: Movement, shots, enemies, etc. . .
-- [ ] Sound effects and music to enhance the gaming experience.
-- [ ] Use particles for explosions, shots, etc. . .
+- [x] At least one animation: Movement, shots, enemies, etc. . .
+- [x] Sound effects and music to enhance the gaming experience.
+- [x] Use particles for explosions, shots, etc. . .
 
 User interface:
 
-- [ ] Interface (HUD) displaying essential information such as health, ammunition, etc. . .
-- [ ] The main menu must contain:
-- A " start the game " button
-- Setting buttons such as :
-- Volume options for sound and music .
-- Window resolution options .
-- A " leave the game " button
+- [x] Interface (HUD) displaying essential information such as health, ammunition, etc. . .
+- [x] The main menu must contain:
+    - [x] A " start the game " button
+    - [x] Setting buttons such as :
+        - [x] Volume options for sound and music.
+        - [x] Window resolution options.
+    - [x] A " leave the game " button
 
 ### SHOULD
 
-- [ ] Weapons: Several weapons ranging from knife to missile launcher, through machine guns.
-- [ ] Map or Mini-Map: Display of the level map to help navigation.
-- [ ] Procedural labyrinthine levels: Procedural generation of levels with walls, doors, floor, ceiling.
-- [ ] Various enemies: Different types of enemies with distinct behaviors.
+- [x] Weapons: Several weapons ranging from knife to missile launcher, through machine guns.
+- [x] Map or Mini-Map: Display of the level map to help navigation.
+- [x] Procedural labyrinthine levels: Procedural generation of levels with walls, doors, floor, ceiling.
+- [x] Various enemies: Different types of enemies with distinct behaviors.
 - [ ] Inventory: Interface to manage the collected items.
 - [ ] Localized damage system: Different damage values based on the enemies’ affected areas.
 - [ ] Health system: Player’s health indicator.
-- [ ] Ammunition: Ammunition management for each weapon.
+- [x] Ammunition: Ammunition management for each weapon.
 - [ ] Doors and Secrets: Locked doors requiring keys, hidden walls with secrets.
 - [ ] Collectibles: Treasures, keys and other collectibles.
 - [ ] Environmental interactions: Firing on explosive barrels or triggering traps.

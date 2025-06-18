@@ -9,6 +9,16 @@
 
 void free_music(sfml_t *sfml)
 {
-    sfMusic_destroy(sfml->music);
+    if (!sfml->music)
+        return;
+    if (sfml->music->music) {
+        sfMusic_destroy(sfml->music->music);
+        sfml->music->music = NULL;
+    }
+    if (sfml->music->menu_music) {
+        sfMusic_destroy(sfml->music->menu_music);
+        sfml->music->menu_music = NULL;
+    }
+    free(sfml->music);
     sfml->music = NULL;
 }

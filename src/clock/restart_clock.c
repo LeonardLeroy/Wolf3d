@@ -9,5 +9,6 @@
 
 void restart_clock(sfml_t *sfml)
 {
-    sfClock_restart(sfml->clock);
+    sfClock_restart(sfml->clocks->clock);
+    sfml->clocks->deltaTime = 0.0f;
 }

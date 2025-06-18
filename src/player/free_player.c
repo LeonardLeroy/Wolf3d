@@ -9,6 +9,8 @@
 
 void free_player(sfml_t *sfml)
 {
+    if (!sfml->game->player)
+        return;
     free(sfml->game->player);
     sfml->game->player = NULL;
 }

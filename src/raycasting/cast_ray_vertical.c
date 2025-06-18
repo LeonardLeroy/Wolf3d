@@ -62,8 +62,8 @@ static void init_vertical_ray_data(sfml_t *sfml, float ray_angle,
 float calculate_vertical_distance(sfml_t *sfml, float ray_angle)
 {
     ray_data_t data;
-    float check_x;
-    float check_y;
+    float check_x = 0.0f;
+    float check_y = 0.0f;
     float dist;
 
     init_vertical_ray_data(sfml, ray_angle, &data);
@@ -85,17 +85,19 @@ void calculate_wall_hit_from_vertical(sfml_t *sfml, float ray_angle,
     int ray_id)
 {
     ray_data_t data;
-    float check_x;
-    float check_y;
+    float check_x = 0.0f;
+    float check_y = 0.0f;
 
     init_vertical_ray_data(sfml, ray_angle, &data);
     while (is_within_bounds(data.next_x, data.next_y)) {
-        adjust_for_ray_direction(ray_angle, data.next_x, &check_x, 0);
+        adjust_for_ray_direction(ray_angle, data.next_x, &check_x, 1);
         check_y = data.next_y;
         if (check_wall_hit(sfml,
             (collision_check_t){check_x, check_y, data.next_x, data.next_y},
-            ray_id))
+            ray_id)) {
+            sfml->game->rays[ray_id].was_hit_vertical = 1;
             break;
+        }
         data.next_x += data.xstep;
         data.next_y += data.ystep;
     }
